@@ -1,5 +1,5 @@
 #include "main.h"
-#include <string.h>
+
 /**
  * is_palindrome - Checks if a string is a palindrome
  * @s: Pointer to the string to be checked
@@ -8,7 +8,7 @@
  */
 int is_palindrome(char *s)
 {
-	int a = _strlen(s);
+	int length = _strlen(s);
 
 	return (palindrome_helper(s, 0, a - 1));
 }
@@ -17,18 +17,18 @@ int is_palindrome(char *s)
  * _strlen - Returns the length of a string
  * @s: Pointer to the string
  *
- * Return: a(length) of the string
+ * Return: length of the string
  */
 int _strlen(char *s)
 {
-	int a = 0;
+	int length = 0;
 
 	while (*s != '\0')
 	{
-		a++;
+		length++;
 		s++;
 
-		return (a);
+		return (length);
 }
 
 /**
