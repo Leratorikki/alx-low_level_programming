@@ -6,7 +6,7 @@
  *
  * Return: NULL if size is 0, or NULL to a pointer of array if it fails.
  */
-char *create_array(unsigned int size, cjar c)
+char *create_array(unsigned int size, char c)
 {
 	if (size == 0)
 	{
