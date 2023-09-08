@@ -2,26 +2,26 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 /**
- * _print - this moves a string one place
- * @str: the string to move
- * @l: the size of string
+ * _print - moves a string one place to the left and prints the string
+ * @str: string to move
+ * @l: size of string
  *
  * Return: void
  */
-
 void _print(char *str, int l)
 {
-	int x, y;
+	int i, j;
 
-	x = y = 0;
-	while (x < l)
+	i = j = 0;
+	while (i < l)
 	{
-		if (str[x] != '0')
-			y = 1;
-		if (y || x == l - 1)
-			_putchar(str[x]);
-		x++;
+		if (str[i] != '0')
+			j = 1;
+		if (j || i == l - 1)
+			_putchar(str[i]);
+		i++;
 	}
 
 	_putchar('\n');
@@ -29,23 +29,23 @@ void _print(char *str, int l)
 }
 
 /**
- * mul - this multiplies a char
- * @n: the char to multiply
+ * mul - multiplies a char with a string and places the answer into dest
+ * @n: char to multiply
  * @num: string to multiply
  * @num_index: last non NULL index of num
  * @dest: destination of multiplication
  * @dest_index: highest index to start addition
- * Return: the pointer to dest, ||  NULL on failure
+ *
+ * Return: pointer to dest, or NULL on failure
  */
-
 char *mul(char n, char *num, int num_index, char *dest, int dest_index)
 {
-	int y, k, mul, mulrem, add, addrem;
+	int j, k, mul, mulrem, add, addrem;
 
 	mulrem = addrem = 0;
-	for (y = num_index, k = dest_index; y >= 0; y--, k--)
+	for (j = num_index, k = dest_index; j >= 0; j--, k--)
 	{
-		mul = (n - '0') * (num[y] - '0') + mulrem;
+		mul = (n - '0') * (num[j] - '0') + mulrem;
 		mulrem = mul / 10;
 		add = (dest[k] - '0') + (mul % 10) + addrem;
 		addrem = add / 10;
@@ -63,23 +63,21 @@ char *mul(char n, char *num, int num_index, char *dest, int dest_index)
 	}
 	return (dest);
 }
-
 /**
  * check_for_digits - checks the arguments to ensure they are digits
  * @av: pointer to arguments
  *
- * Return: 0 if && 1 if not
+ * Return: 0 if digits, 1 if not
  */
-
 int check_for_digits(char **av)
 {
-	int x, y;
+	int i, j;
 
-	for (x = 1; x < 3; x++)
+	for (i = 1; i < 3; i++)
 	{
-		for (y = 0; av[x][y]; y++)
+		for (j = 0; av[i][j]; j++)
 		{
-			if (av[x][y] < '0' || av[x][y] > '9')
+			if (av[i][j] < '0' || av[i][j] > '9')
 				return (1);
 		}
 	}
@@ -88,31 +86,30 @@ int check_for_digits(char **av)
 
 /**
  * init - initializes a string
- * @str: the string to initialize
- * @l: the length of string
+ * @str: sting to initialize
+ * @l: length of strinf
+ *
  * Return: void
  */
-
 void init(char *str, int l)
 {
-	int x;
+	int i;
 
-	for (x = 0; x < l; x++)
-		str[x] = '0';
-	str[x] = '\0';
+	for (i = 0; i < l; i++)
+		str[i] = '0';
+	str[i] = '\0';
 }
 
 /**
- * main - multiplies
- * @argc: the number of arguments
- * @argv: the argument vector
+ * main - multiply two numbers
+ * @argc: number of arguments
+ * @argv: argument vector
  *
- * Return: zero || exit status of 98 if failure
+ * Return: zero, or exit status of 98 if failure
  */
-
 int main(int argc, char *argv[])
 {
-	int l1, l2, ln, ti, x;
+	int l1, l2, ln, ti, i;
 	char *a;
 	char *t;
 	char e[] = "Error\n";
@@ -136,9 +133,9 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	init(a, ln - 1);
-	for (ti = l2 - 1, x = 0; ti >= 0; ti--, x++)
+	for (ti = l2 - 1, i = 0; ti >= 0; ti--, i++)
 	{
-		t = mul(argv[2][ti], argv[1], l1 - 1, a, (ln - 2) - x);
+		t = mul(argv[2][ti], argv[1], l1 - 1, a, (ln - 2) - i);
 		if (t == NULL)
 		{
 			for (ti = 0; e[ti]; ti++)
