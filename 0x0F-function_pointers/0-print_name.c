@@ -10,13 +10,5 @@
  */
 void print_name(char *name, void (*f)(char *))
 {
-	int c;
-
-	if (name == NULL || f == NULL)
-		return;
-
-	for (c = 0; name[c] != '\0'; c++)
-	{
-		(*f)(&name[c]);
-	}
+	f(name);
 }
