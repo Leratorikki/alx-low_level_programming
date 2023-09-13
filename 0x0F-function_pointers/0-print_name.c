@@ -3,17 +3,20 @@
 
 /**
  * print_name - prints a name
- *@name: function to be printed
+ *@name: argument to be printed
  *@f: pointer to a function
  *
- * Return: Nothing
+ * Return: void
  */
 void print_name(char *name, void (*f)(char *))
 {
-	f(name);
-}
-void print(char  *name)
-{
-	printf("Name: %s\n", name);
-}
+	int c;
 
+	if (name == NULL || f == NULL)
+		return;
+
+	for (c = 0; name[c] != '\0'; c++)
+	{
+		(*f)(&name[c]);
+	}
+}
