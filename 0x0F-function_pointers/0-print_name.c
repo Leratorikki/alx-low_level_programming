@@ -10,6 +10,9 @@
  */
 void print_name(char *name, void (*f)(char *))
 {
-	if (name != NULL || f != NULL)
-		f(name);
+	f(name);
+}
+void print(char *name)
+{
+	printf("Name: %s\n", name);
 }
