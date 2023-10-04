@@ -3,7 +3,7 @@
 
 /**
  * main - Prints the name of the program.
- * 
+ *
  * @argc: The number of command-line arguments(CML).
  * @argv: An array of strings containing the arguments.
  *
